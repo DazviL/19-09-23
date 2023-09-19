@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(stop.jpg);
+            background-size: cover;
+        }
+        .container {
+            text-align: center;
+            margin-top: 100px;
+                }
+        .name-box {
+            border: 2px solid black; /* Adiciona uma borda preta */
+            display: inline-block; /* Mantém o tamanho do quadrado em torno do nome */
+            padding: 5px; /* Espaçamento interno para o nome dentro do quadrado */
+        }
+    </style>
+</head>
+<body>
+    <!-- Tela de entrada do jogador -->
+    <br><br><br><br> <br><br><br><br><br><br><br><br><div id="entryScreen" class="container">
+        <h1>Bem-vindo ao Stopots</h1>
+        <label for="playerName">Digite seu nome:</label>
+        <input type="text" id="playerName" placeholder="Seu nome">
+        <button id="startGame">Começar o Jogo</button>
+    </div>
+
+    <!-- Tela de confirmação da entrada do jogador -->
+    <div id="confirmationScreen" class="container" style="display: none;">
+        <h2>Seu nome foi gravado!</h2>
+        <p>Nome do jogador: <span id="confirmedName" class="name-box"></span></p>
+        <button id="playGame">Jogar</button>
+    </div>
+
+    <script>
+        // Tela de entrada do jogador
+        const entryScreen = document.getElementById('entryScreen');
+        const playerNameInput = document.getElementById('playerName');
+        const startGameButton = document.getElementById('startGame');
+
+        // Tela de confirmação da entrada do jogador
+        const confirmationScreen = document.getElementById('confirmationScreen');
+        const confirmedNameElement = document.getElementById('confirmedName');
+        const playGameButton = document.getElementById('playGame');
+
+        // Evento de clique no botão "Começar o Jogo"
+        startGameButton.addEventListener('click', () => {
+            const playerName = playerNameInput.value;
+            if (playerName.trim() !== '') {
+                // Gravar o nome do jogador na sessão
+                sessionStorage.setItem('playerName', playerName);
+                
+                // Atualizar a tela de confirmação
+                confirmedNameElement.textContent = playerName;
+                entryScreen.style.display = 'none';
+                confirmationScreen.style.display = 'block';
+            } else {
+                alert('Por favor, insira seu nome antes de continuar.');
+            }
+        });
+
+        // Evento de clique no botão "Jogar"
+        playGameButton.addEventListener('click', () => {
+            // Redirecionar para a página do jogo ou executar a lógica do jogo aqui
+            alert('Iniciar o jogo agora! Você pode adicionar a lógica do jogo aqui.');
+        });
+    </script>
+</body>
+</html>
